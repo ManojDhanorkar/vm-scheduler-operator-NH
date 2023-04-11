@@ -223,8 +223,9 @@ func (r *AWSVMSchedulerStopNHReconciler) cronJobForAWSVMSchedulerStopNH(awsVMSch
 					Template: corev1.PodTemplateSpec{
 						Spec: corev1.PodSpec{
 							Containers: []corev1.Container{{
-								Name:  awsVMScheduler.Name,
-								Image: awsVMScheduler.Spec.Image,
+								Name:            awsVMScheduler.Name,
+								Image:           awsVMScheduler.Spec.Image,
+								ImagePullPolicy: "Always",
 								Env: []corev1.EnvVar{
 									{
 										Name:  "ec2_instanceIds",

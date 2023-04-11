@@ -227,8 +227,9 @@ func (r *AzureVMSchedulerStartNHReconciler) cronJobForAzureVMSchedulerStartNH(az
 					Template: corev1.PodTemplateSpec{
 						Spec: corev1.PodSpec{
 							Containers: []corev1.Container{{
-								Name:  azureVMScheduler.Name,
-								Image: azureVMScheduler.Spec.Image,
+								Name:            azureVMScheduler.Name,
+								Image:           azureVMScheduler.Spec.Image,
+								ImagePullPolicy: "Always",
 								Env: []corev1.EnvVar{
 									{
 										Name:  "command",

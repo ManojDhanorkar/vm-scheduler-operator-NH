@@ -225,8 +225,9 @@ func (r *GCPVMSchedulerStartNHReconciler) cronJobForGCPVMSchedulerStartNH(gcpVMS
 					Template: corev1.PodTemplateSpec{
 						Spec: corev1.PodSpec{
 							Containers: []corev1.Container{{
-								Name:  gcpVMScheduler.Name,
-								Image: gcpVMScheduler.Spec.Image,
+								Name:            gcpVMScheduler.Name,
+								Image:           gcpVMScheduler.Spec.Image,
+								ImagePullPolicy: "Always",
 								VolumeMounts: []corev1.VolumeMount{
 									{
 										Name:      "foo",
